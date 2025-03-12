@@ -21,8 +21,11 @@ async function getProduct(id: string) {
 }
 
 export default async function ProductDetailPage({ params }: { params: { id: string } }) {
-  // params에서 id를 가져옵니다 (URL에서 추출됨)
-  const product = await getProduct(params.id);
+  // params 객체를 먼저 await 처리
+  const resolvedParams = await Promise.resolve(params);
+  
+  // 이제 resolvedParams를 사용
+  const product = await getProduct(resolvedParams.id);
   
   // 상품이 없으면 404 페이지로 리디렉션
   if (!product) {
