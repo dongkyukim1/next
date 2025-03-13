@@ -1,8 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+// 3번째 이미지만 로컬 이미지로 import
+import orangeImage from "../../../public/images/food2.png";
+
 
 // 더 눈에 띄는 로그 형식 사용
-let 상품 = ["apple", "banana", "orange"];
+let 상품 = ["토마토", "banana", "orange"];
 let 어레이 = [2, 3, 4];
 어레이.map((a) => {
   console.log(a)
@@ -17,10 +21,29 @@ export default async function ProductsPage() {
     <div className="container mx-auto p-4">
       <div>
         <h4 className="title">상품 목록</h4>
-        {상품.map((상품, index) => { 
+       
+        {상품.map((상품, i) => { 
           return (
-            <div key={index} className="food">
+            <div key={i} className="food">
               <h4>{상품} $40</h4>
+              {/* 첫 번째와 두 번째 이미지는 기존 방식 유지 */}
+              {i < 2 && (
+                <img 
+                  src={`/images/food${i}.png`}
+                  alt={상품} 
+                />
+              )}
+              
+              {/* 3번째 이미지는 로컬 이미지 import 방식 사용 */}
+              {i === 2 && (
+                <Image 
+                  src={orangeImage}
+                  alt={상품}
+                  width={100}
+                  height={100}
+                  priority
+                />
+              )}
             </div>
           );
         })}
