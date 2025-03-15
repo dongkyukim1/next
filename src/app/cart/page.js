@@ -1,6 +1,6 @@
+import 작명 from './data.js';
 import React from "react";
-import 작명 from "./data.js"
-import 하이 from "./assgingment.jsx"
+import 하이 from "./assgingment.tsx";
 // CartItem 컴포넌트
 function CartItem() {
   return (
