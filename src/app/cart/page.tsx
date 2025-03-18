@@ -1,5 +1,5 @@
 import React from "react";
-import 하이 from "./assgingment";
+import 하이 from "./assignment/page";
 
 // CartItem 컴포넌트 (props 사용)
 function CartItem({ item }) {
